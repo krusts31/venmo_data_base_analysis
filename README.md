@@ -6,11 +6,11 @@ The goal of this project is to make it easier for Venmo users to see which perso
 
 **CONTRIBUTE**
 
-Read our code of conduct. Follow the norm.
+Read our code of conduct.
 
 **CODE OF CONDUCT**
 
-Read the CONTRIBUTE section
+We don't know yet, but plis help.
 
 **LICENSE**
 
