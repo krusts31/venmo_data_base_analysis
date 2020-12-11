@@ -8,6 +8,10 @@ The goal of this project is to make it easier for Venmo users to see which perso
 
 Read our code of conduct. Follow the norm.
 
+**CODE OF CONDUCT**
+
+Read the CONTRIBUTE section
+
 **LICENSE**
 
 [MIT](https://github.com/krusts31/venmo_data_base_analysis/blob/main/LICENSE)
