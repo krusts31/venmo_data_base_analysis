@@ -24,5 +24,5 @@ See contribute
 
 [MIT](https://github.com/krusts31/venmo_data_base_analysis/blob/main/LICENSE)
 
-**MOTO**
+**MOTTO**
  We dont take our self seriously
