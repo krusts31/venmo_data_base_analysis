@@ -18,8 +18,8 @@ Based on how good your transaction comments rhyme we will match you with potenti
 
 **CODE OF CONDUCT**
 
-See contribute
-  
+Add comments if you want to add code.
+
 **LICENSE**
 
 [MIT](https://github.com/krusts31/venmo_data_base_analysis/blob/main/LICENSE)
