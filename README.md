@@ -18,7 +18,7 @@ Based on how good your transaction comments rhyme we will match you with potenti
 
 **CODE OF CONDUCT**
 
-Add comments if you add your code.
+See contribute
   
 **LICENSE**
 
