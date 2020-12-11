@@ -8,10 +8,21 @@ The goal of this project is to make it easier for Venmo users to see which perso
 
 Read our code of conduct.
 
+**ISSUES PAGE**
+
+If you want to become a contributor fast then find an issue or solve one on the issue page. Ask any one of the contributors for a contributor permissions.
+
+**FUTURE VISON**
+
+Based on how good your transaction comments rhyme we will match you with potential dating partners, in effort to make the best out of a bad situation of user data mining why not give it a twist.
+
 **CODE OF CONDUCT**
 
-We don't know yet, but plis help.
-
+See contribute
+  
 **LICENSE**
 
 [MIT](https://github.com/krusts31/venmo_data_base_analysis/blob/main/LICENSE)
+
+**MOTTO**
+ We dont take our self seriously
