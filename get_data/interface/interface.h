@@ -6,7 +6,7 @@
 /*   By: jhille <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 11:12:25 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 13:31:40 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 16:36:06 by jhille        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,13 @@
 //Reset
 # define reset "\e[0m"
 
-
-
+typedef struct user
+{
+	char	*username;
+	char	*displayname;
+	char	*date;
+	char	*comment;
+	struct	p_list	*next;
+}		p_list;
 
 #endif
