@@ -3,7 +3,7 @@
 void	ft_profileadd_back(p_list **head, p_list *new)
 {
 	p_list	*temp;
-	
+
 	temp = *head;
 	if (temp == 0)
 	{

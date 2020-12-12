@@ -6,7 +6,7 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 17:23:08 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 17:37:51 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,30 @@ p_list	*findname(char *name, char **prof)
 	char	*line;
 	p_list	*head;
 	p_list	*temp;
-	fd = open("test.txt", O_RDONLY);
-	
+	fd = open("../files/note_data.txt", O_RDONLY);
+
+	head = 0;
 	while (ft_getline(fd, &line) != 0)
 	{
+		if (*line == '\0')
+		{
+			free(line);
+			continue ;
+		}
 		prof = ft_split(line, ',');
-		if (ft_strncmp(name, prof[0], ft_strlen(prof[0])) == 0)
+		if (prof == NULL)
+			return (NULL);
+		if (ft_strcmp(name, prof[0]) == 0)
 		{
 			temp = ft_profilenew(prof);
 			ft_profileadd_back(&head, temp);
+			free(prof);
 		}
+		else
+			ft_free_split(prof);
+		free(line);
 	}
+	free(line);
 	return (head);
 }
 
@@ -95,6 +108,8 @@ int	main(void)
 	while (iterate != 0)
 	{
 		printf("%s", iterate->username);
+		printf("%s: ", iterate->date);
+		printf("%s\n", iterate->comment);
 		iterate = iterate->next;
 	}
 
