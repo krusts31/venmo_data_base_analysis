@@ -6,12 +6,11 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 17:42:19 by kfu           ########   odam.nl         */
+/*   Updated: 2020/12/12 17:43:59 by kfu           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
-#include "template/template.h"
 
 char	name[100];
 
@@ -114,7 +113,6 @@ void	help()
 	printf("\U0001F31F   %s3.%s Finally, make sure to click 'Save Settings'.\n", BLU, reset);
 	printf("\n");
 }
-
 
 int	main(void)
 {
