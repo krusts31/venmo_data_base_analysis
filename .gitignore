@@ -4,3 +4,6 @@ a.out*
 *.a
 .vscode
 *.o
+notes.txt
+comment_one.txt
+comment_two.txt
