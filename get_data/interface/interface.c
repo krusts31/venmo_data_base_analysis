@@ -6,7 +6,7 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 17:37:51 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 17:42:19 by kfu           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,39 @@ p_list	*findname(char *name, char **prof)
 	return (head);
 }
 
+void	message()
+{
+	printf("\n");
+	printf("%sWelcome to your public Venmo information, please keep in mind that this is very REAL.%s\n\n", UBLU, reset);
+}
+
+// Function to display general info
+void	general(p_list *iterate)
+{
+	printf("\U0001F9D2 Personal information\U0001F9D2\n\n");
+	printf("Username: %s\n", iterate->username);
+	printf("Name: %s\n", iterate->displayname);
+	printf("\n");
+}
+
+// Function to display comments
+void	comments(p_list *iterate)
+{
+	printf("\U0001F6A8\U0001F6A8\U0001F6A8 %sTransactions that EVERYONE can see:%s \U0001F6A8\U0001F6A8\U0001F6A8\n\n", BRED, reset);
+	printf("%s - %s\n", iterate->date, iterate->comment);
+	printf("\n");
+}
+
+void	help()
+{
+	printf("\U0001F31F Don't you worry, you can change this really quick!\n");
+	printf("\U0001F31F   %s1.%s Go to your settings -> privacy.\n", BLU, reset);
+	printf("\U0001F31F   %s2.%s Select your preferred default privacy setting.\n", BLU, reset);
+	printf("\U0001F31F   %s3.%s Finally, make sure to click 'Save Settings'.\n", BLU, reset);
+	printf("\n");
+}
+
+
 int	main(void)
 {
 	int	msec;
@@ -114,7 +147,7 @@ int	main(void)
 	}
 
 	message();
-	general();
-	comments();
+	general(iterate);
+	comments(iterate);
 	help();
 }
