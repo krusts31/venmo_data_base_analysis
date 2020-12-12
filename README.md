@@ -25,4 +25,7 @@ Add comments if you want to add code.
 [MIT](https://github.com/krusts31/venmo_data_base_analysis/blob/main/LICENSE)
 
 **MOTTO**
- We dont take our self seriously
+We dont take our self seriously
+ 
+**HOW TO USE DATABASE**
+hear you can insttall mogo db and download the database: https://github.com/sa7mon/venmo-data
