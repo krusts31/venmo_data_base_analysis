@@ -6,7 +6,7 @@
 /*   By: jhille <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 11:12:25 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 11:41:38 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 11:59:02 by jhille        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,4 @@
 //Reset
 #define reset "\e[0m"
 
-#endif
+//#endif
