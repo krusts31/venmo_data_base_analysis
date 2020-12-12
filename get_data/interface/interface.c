@@ -6,7 +6,7 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 17:43:59 by kfu           ########   odam.nl         */
+/*   Updated: 2020/12/12 17:50:18 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,21 @@ void	help()
 	printf("\n");
 }
 
+void	clear_scuffed_free_list(p_list *ptr)
+{
+	p_list *tmp;
+	while (ptr != 0)
+	{
+		tmp = ptr->next;
+		free(ptr->comment);
+		free(ptr->date);
+		free(ptr->displayname);
+		free(ptr->username);
+		free(ptr);
+		ptr = tmp;
+	}
+}
+
 int	main(void)
 {
 	int	msec;
@@ -135,17 +150,19 @@ int	main(void)
 	scanf("%s", name);
 
 	ptr = findname(name, prof);
-	iterate = ptr;	
-	while (iterate != 0)
-	{
-		printf("%s", iterate->username);
-		printf("%s: ", iterate->date);
-		printf("%s\n", iterate->comment);
-		iterate = iterate->next;
-	}
+	iterate = ptr;
+	// while (iterate != 0)
+	// {
+	// 	printf("%s", iterate->username);
+	// 	printf("%s: ", iterate->date);
+	// 	printf("%s\n", iterate->comment);
+	// 	iterate = iterate->next;
+	// }
 
 	message();
 	general(iterate);
 	comments(iterate);
 	help();
+	// free the list and all it's char pointers.
+	clear_scuffed_free_list(ptr);
 }
