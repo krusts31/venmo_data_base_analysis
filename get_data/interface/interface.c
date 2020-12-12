@@ -6,7 +6,7 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 18:37:37 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 18:42:12 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,8 +210,14 @@ void	censor(char *buf)
 	i = 0;
 	while (keywords[i] != 0)
 	{
-		
-
+		char *ptr;
+		ptr = strstr(buf, keywords[i]);
+		if (ptr != NULL)
+		{
+			for (int j = 0; keywords[j] != 0; j++)
+				ptr[j] = '*';
+		}
+		i++;
 	}
 }
 
@@ -223,7 +229,7 @@ void	comments(p_list *iterate)
 	
 	while (iterate != 0)
 	{
-		iterate->comment = censor(iterate->comment);
+		censor(iterate->comment);
 		printf("%s - %s\n", iterate->date, iterate->comment);
 		iterate->next;
 	}
