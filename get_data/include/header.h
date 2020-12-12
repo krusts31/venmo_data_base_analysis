@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:03:07 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 10:18:36 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 10:24:06 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_docs
 {
 	char	*doc_id;
 	char	*username;
+	size_t	size;
 }				t_docs;
 
 #endif
