@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   interface.h                                        :+:    :+:            */
+/*   colors.h                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jhille <marvin@codam.nl>                     +#+                     */
+/*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/12 11:12:25 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 11:59:02 by jhille        ########   odam.nl         */
+/*   Created: 2020/12/12 11:52:55 by kfu           #+#    #+#                 */
+/*   Updated: 2020/12/12 11:54:25 by kfu           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#ifndef INTERFACE
-//# define INTERFACE
-# include <stdio.h>
-# include "../include/libft.h"
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
 /*
  * This is free and unencumbered software released into the public domain.
  *
@@ -96,5 +88,3 @@
 
 //Reset
 #define reset "\e[0m"
-
-//#endif
