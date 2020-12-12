@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:36:26 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 11:40:49 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 11:46:41 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,11 @@ int	read_in_data(char *pathname, t_docs *docs)
 	char	*line;
 
 	fd = open(pathname, O_RDONLY);
-	perror(pathname);
 	if (fd == -1)
+	{
+		perror(pathname);
 		return (error);
+	}
 	ret = 1;
 	while (ret > 0)
 	{
@@ -200,7 +202,7 @@ int	get_keyword_matches(void)
 	docs = doc_init(0);
 	if (docs == NULL)
 		return (error);
-	ret = read_in_data("notes", docs);
+	ret = read_in_data("../test.txt", docs);
 	if (ret == error)
 	{
 		ft_free_doc(docs);
