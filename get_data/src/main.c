@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 09:51:36 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 10:24:18 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 10:30:30 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	find_match(char *line, t_docs **docs)
 
 }
 
-int	read_in_data(char *pathname)
+int	find_keywords_in_data(char *pathname)
 {
 	int		fd;
 	int		ret;
