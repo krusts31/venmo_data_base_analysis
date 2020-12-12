@@ -3,14 +3,17 @@
 /*                                                        ::::::::            */
 /*   interface.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jhille <marvin@codam.nl>                     +#+                     */
+/*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 12:12:57 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 12:33:04 by kfu           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
+#include "template/template.h"
+
+char name[100];
 
 void	printascii(int fd)
 {
@@ -31,6 +34,10 @@ int	main(void)
 	printascii(fd);
 	close(fd);
 
-
-	printf("Please enter your user/real name\n");
+	printf("\nAre you ready to dig up some dirty laundry? Please enter your user/real name:\n");
+	scanf("%s", name);
+	message();
+	general();
+	comments();
+	help();
 }
