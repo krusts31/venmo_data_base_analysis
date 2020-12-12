@@ -1,4 +1,5 @@
 bash get_data.sh
+make -C libft
 
 make
 ./a.out 1 > files/get_note.sh 2> files/stats.txt
