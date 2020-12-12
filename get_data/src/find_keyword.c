@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:36:26 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 15:27:21 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 15:41:36 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,7 @@ int	get_keyword_matches(char *pathname, int type)
 		return (error);
 	}
 	if (type == 1)
-		generate_note_query("mongoexport -d test -c venmo -f 'payment.actor.username,payment.actor.display_name,date_created,note' -q '", docs, " ' --type=csv --noHeaderLine -o files/note_data.txt");
+		generate_note_query("mongoexport -d test -c venmo -f 'payment.actor.username,payment.actor.display_name,date_created,note' -q '", docs, " ' --type=csv --noHeaderLine");
 	else if (type == 2)
 		generate_query("mongoexport -d test -c venmo -f 'comments.data.0.user.username,comments.data.0.user.display_name,comments.data.0.date_created,comments.data.0.message' -q '{ $or: [", docs, "] }' --type=csv --noHeaderLine -o files/comment_one_data.txt");
 	else if (type == 3)
