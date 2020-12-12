@@ -7,4 +7,8 @@ a.out*
 notes.txt
 comment_one.txt
 comment_two.txt
+get_note.sh
+get_comment_one.sh
+get_comment_two.sh
+note_data.txt
 objectIds.txt
