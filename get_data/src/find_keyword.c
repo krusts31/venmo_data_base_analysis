@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:36:26 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 12:28:45 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 12:41:50 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ const char	*keywords[] =
 "spoil",
 "mommy",
 "milk",
-"strippers",
+"strip",
 "drank",
 "nudes",
 "glizzy",
@@ -125,10 +125,9 @@ const char	*keywords[] =
 "peach",
 "water",
 "needle",
-"hydrohomie",
 "xxx",
 "I love you",
-"Will you marye me",
+"Will you marry me",
 "password",
 "pas",
 "kill",
