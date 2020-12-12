@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:36:26 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 12:41:50 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 15:27:21 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 
 const char	*keywords[] =
 {
-"1P",
-"5MeODMT",
+"1p",
+"5meOdmt",
 "dissociatives",
 "noids",
 "1P_LSD",
-"DissonautUniverse",
-"Nootropics",
+"dissonautuniverse",
+"nootropics",
 "2cb",
-"DMT",
+"dmt",
 "opiates",
 "4acodmt",
 "DPH",
@@ -39,37 +39,37 @@ const char	*keywords[] =
 "fentanyl",
 "PoppyTea",
 "alcohol",
-"Kava",
-"PsilocybinMushrooms",
+"kava",
+"psilocybinmushrooms",
 "ambien",
 "ketamine",
-"ResearchChemicals",
-"aMT",
-"Kombucha",
-"Salvia",
+"researchchemicals",
+"amt",
+"kombucha",
+"salvia",
 "anabolic",
 "kratom",
 "steroids",
 "lean",
 "stims",
-"Ayahuasca",
-"LSA",
-"TheSaviorSubstances",
+"ayahuasca",
+"lsa",
+"thesaviorsubstances",
 "benzodiazepines",
-"LSD",
+"lsd",
 "treedibles",
 "cannabis",
-"MDMA",
+"mdma",
 "trees",
-"CannabisExtracts",
-"MemantineHCl",
+"cannabisextracts",
+"memantinehcl",
 "cocaine",
 "mescaline",
-"Cigarettes",
+"cigarettes",
 "meth",
-"DrugCombos",
+"drugcombos",
 "modafinil",
-"MrE",
+"mre",
 "drugs",
 "line",
 "coke",
@@ -90,7 +90,7 @@ const char	*keywords[] =
 "sative",
 "indica",
 "molly",
-"MDMA",
+"mdma",
 "morphine",
 "speed",
 "opium",
@@ -126,8 +126,8 @@ const char	*keywords[] =
 "water",
 "needle",
 "xxx",
-"I love you",
-"Will you marry me",
+"i love you",
+"will you marry me",
 "password",
 "pas",
 "kill",
@@ -135,6 +135,39 @@ const char	*keywords[] =
 NULL
 };
 
+static void	ft_strtolower(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != 0)
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+}
+
+static size_t	get_keyword_size(void)
+{
+	size_t	i;
+
+	i = 0;
+	while (keywords[i] != NULL)
+		i++;
+	return (i);
+}
+
+void			print_keyword_appearances(int *keyword_appearances, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		fprintf(stderr, "%s: %d\n", keywords[i], keyword_appearances[i]);
+		i++;
+	}
+}
 
 size_t	ft_strings_size(char **strings)
 {
@@ -146,7 +179,7 @@ size_t	ft_strings_size(char **strings)
 	return (i);
 }
 
-int	find_match(char *line, t_docs *docs)
+int	find_match(char *line, t_docs *docs, int *key_appears)
 {
 	char	**strings;
 	size_t	i;
@@ -159,11 +192,13 @@ int	find_match(char *line, t_docs *docs)
 		return (success);
 	i = 0;
 	found = 0;
+	ft_strtolower(strings[0]);
 	while (keywords[i] != NULL)
 	{
 		if (strstr(strings[0], keywords[i]) != NULL)
 		{
 			found = 1;
+			key_appears[i] += 1;
 			break ;
 		}
 		i++;
@@ -178,11 +213,13 @@ int	find_match(char *line, t_docs *docs)
 	return (success);
 }
 
-int	read_in_data(char *pathname, t_docs *docs)
+int	read_in_data(char *pathname, t_docs *docs, int type)
 {
 	int		fd;
 	int		ret;
 	char	*line;
+	int		total_keys;
+	int		*key_appears;
 
 	fd = open(pathname, O_RDONLY);
 	if (fd == -1)
@@ -191,15 +228,21 @@ int	read_in_data(char *pathname, t_docs *docs)
 		return (error);
 	}
 	ret = 1;
+	total_keys = get_keyword_size();
+	key_appears = (int*)ft_calloc(total_keys, sizeof(int));
+	if (key_appears == NULL)
+		return (error);
 	while (ret > 0)
 	{
 		ret = ft_getline(fd, &line);
 		if (ret == -1)
 			return (error);
 		if (*line != '\0');
-			find_match(line, docs);
+			find_match(line, docs, key_appears);
 		free(line);
 	}
+	if (type == 1)
+		print_keyword_appearances(key_appears, total_keys);
 	close(fd);
 	return (success);
 }
@@ -217,7 +260,7 @@ int	print_doc_ids(t_docs *docs)
 	return (success);
 }
 
-int	get_keyword_matches(void)
+int	get_keyword_matches(char *pathname, int type)
 {
 	t_docs	*docs;
 	int		ret;
@@ -225,25 +268,19 @@ int	get_keyword_matches(void)
 	docs = doc_init(0);
 	if (docs == NULL)
 		return (error);
-	ret = read_in_data("src/notes.txt", docs);
+	ret = read_in_data(pathname, docs, type);
 	if (ret == error)
 	{
 		ft_free_doc(docs);
 		return (error);
 	}
-	ret = read_in_data("src/comment_one.txt", docs);
-	if (ret == error)
-	{
-		ft_free_doc(docs);
-		return (error);
-	}
-	ret = read_in_data("src/comment_two.txt", docs);
-	if (ret == error)
-	{
-		ft_free_doc(docs);
-		return (error);
-	}
-	print_doc_ids(docs);
+	if (type == 1)
+		generate_note_query("mongoexport -d test -c venmo -f 'payment.actor.username,payment.actor.display_name,date_created,note' -q '", docs, " ' --type=csv --noHeaderLine -o files/note_data.txt");
+	else if (type == 2)
+		generate_query("mongoexport -d test -c venmo -f 'comments.data.0.user.username,comments.data.0.user.display_name,comments.data.0.date_created,comments.data.0.message' -q '{ $or: [", docs, "] }' --type=csv --noHeaderLine -o files/comment_one_data.txt");
+	else if (type == 3)
+		generate_query("mongoexport -d test -c venmo -f 'comments.data.0.user.username,comments.data.0.user.display_name,comments.data.0.date_created,comments.data.0.message' -q '", docs, "' --type=csv --noHeaderLine -o files/comment_two_data.txt");
+	write(1, "\n", 1);
 	ft_free_doc(docs);
 	return (success);
 }

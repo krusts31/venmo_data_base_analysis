@@ -6,10 +6,10 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:03:07 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 11:43:25 by jhille        ########   odam.nl         */
-/*   Updated: 2020/12/12 11:06:10 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 15:08:07 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef HEADER_H
 # define HEADER_H
@@ -38,7 +38,14 @@ typedef struct	s_docs
 ** find_keyword.c
 */
 
-int	get_keyword_matches(void);
+int	get_keyword_matches(char *pathname, int type);
+
+/*
+** generate_mongo_queries.c
+*/
+
+int	generate_query(char *start_of_query, t_docs *docs, char *end_of_query);
+int	generate_note_query(char *start_of_query, t_docs *docs, char *end_of_query);
 
 /*
 ** doc_management.c

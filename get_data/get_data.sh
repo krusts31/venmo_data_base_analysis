@@ -15,10 +15,10 @@
 # change -o <fileName> to output to different file
 
 # GET NOTES #
-# mongoexport -d test -c venmo -f 'payment.note,_id' --type=csv --noHeaderLine -o notes.txt
+mongoexport -d test -c venmo -f 'payment.note,_id' --type=csv --noHeaderLine -o notes.txt
 
 # GET FIRST COMMENT #
-# mongoexport -d test -c venmo -q '{"comments.count":1}' -f 'comments.data.0.message,_id' --type=csv --noHeaderLine -o comment_one.txt
+mongoexport -d test -c venmo -q '{"comments.count":1}' -f 'comments.data.0.message,_id' --type=csv --noHeaderLine -o comment_one.txt
 
 # GET SECOND COMMENT
 mongoexport -d test -c venmo -q '{"comments.count":2}' -f 'comments.data.1.message,_id' --type=csv --noHeaderLine -o comment_two.txt
