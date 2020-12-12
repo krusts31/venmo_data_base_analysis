@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:38:21 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 11:27:56 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 12:10:09 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	doc_pushback(t_docs *docs, char *id)
 	docs->doc_ids[docs->nmemb] = ft_strdup(id);
 	if (docs->doc_ids[docs->nmemb] == NULL)
 		return (error);
-	docs->nmemb++;
+	docs->nmemb += 1;
 	return (success);
 }
 
