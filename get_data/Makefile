@@ -6,7 +6,7 @@
 #    By: mraasvel <mraasvel@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/12/12 09:51:49 by mraasvel      #+#    #+#                  #
-#    Updated: 2020/12/12 10:19:37 by mraasvel      ########   odam.nl          #
+#    Updated: 2020/12/12 11:27:26 by mraasvel      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 CC = gcc
 IFLAGS = -I $(IDIR)
 # CFLAGS = -Wall -Werror -Wextra
-DFLAGS = -O0 -g -fsanitize=address
+# DFLAGS = -O0 -g -fsanitize=address
 FASTFLAGS = -O3
 LIBFLAG = -L$(LIBDIR) -lft
 
