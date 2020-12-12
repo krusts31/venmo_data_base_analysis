@@ -1,1 +1,1 @@
-gcc -L../../libft -lft main.c && ./a.out
+gcc -O0 -g -fsanitize=address main.c -L. -lft && ./a.out
