@@ -108,5 +108,12 @@ char	*arr[] =
 "water",
 "needle",
 "hydrohomie",
+"xxx",
+"I love you",
+"Will you marye me",
+"password",
+"pas",
+"kill",
+"fuck",
 NULL
 };
