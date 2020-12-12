@@ -6,7 +6,7 @@
 /*   By: mraasvel <mraasvel@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:36:26 by mraasvel      #+#    #+#                 */
-/*   Updated: 2020/12/12 11:46:41 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 12:28:45 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,26 @@ const char	*keywords[] =
 "water",
 "needle",
 "hydrohomie",
+"xxx",
+"I love you",
+"Will you marye me",
+"password",
+"pas",
+"kill",
+"fuck",
 NULL
 };
 
+
+size_t	ft_strings_size(char **strings)
+{
+	size_t	i;
+
+	i = 0;
+	while (strings[i] != NULL)
+		i++;
+	return (i);
+}
 
 int	find_match(char *line, t_docs *docs)
 {
@@ -139,6 +156,8 @@ int	find_match(char *line, t_docs *docs)
 	strings = ft_split(line, ',');
 	if (strings == NULL)
 		return (error);
+	if (ft_strings_size(strings) != 2)
+		return (success);
 	i = 0;
 	found = 0;
 	while (keywords[i] != NULL)
@@ -149,6 +168,11 @@ int	find_match(char *line, t_docs *docs)
 			break ;
 		}
 		i++;
+	}
+	if (keywords[i] == NULL)
+	{
+		ft_free_split(strings);
+		return (success);
 	}
 	doc_pushback(docs, strings[1]);
 	ft_free_split(strings);
@@ -202,26 +226,24 @@ int	get_keyword_matches(void)
 	docs = doc_init(0);
 	if (docs == NULL)
 		return (error);
-	ret = read_in_data("../test.txt", docs);
+	ret = read_in_data("src/notes.txt", docs);
 	if (ret == error)
 	{
 		ft_free_doc(docs);
 		return (error);
 	}
-	ft_free_doc(docs);
-	return (success);
-	// ret = read_in_data("comment_one.txt", docs);
-	// if (ret == error)
-	// {
-	// 	ft_free_doc(docs);
-	// 	return (error);
-	// }
-	// ret = read_in_data("comment_two.txt", docs);
-	// if (ret == error)
-	// {
-	// 	ft_free_doc(docs);
-	// 	return (error);
-	// }
+	ret = read_in_data("src/comment_one.txt", docs);
+	if (ret == error)
+	{
+		ft_free_doc(docs);
+		return (error);
+	}
+	ret = read_in_data("src/comment_two.txt", docs);
+	if (ret == error)
+	{
+		ft_free_doc(docs);
+		return (error);
+	}
 	print_doc_ids(docs);
 	ft_free_doc(docs);
 	return (success);
