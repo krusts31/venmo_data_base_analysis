@@ -6,10 +6,11 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 18:42:12 by mraasvel      ########   odam.nl         */
+/*   Updated: 2020/12/12 18:49:04 by mraasvel      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "interface.h"
 
 char	name[100];
@@ -92,6 +93,8 @@ void	message()
 void	general(p_list *iterate)
 {
 	printf("\U0001F9D2 Personal information\U0001F9D2\n\n");
+	if (iterate == NULL)
+		return ;
 	printf("Username: %s\n", iterate->username);
 	printf("Name: %s\n", iterate->displayname);
 	printf("\n");
@@ -100,115 +103,115 @@ void	general(p_list *iterate)
 void	censor(char *buf)
 {
 	int	i;
-	char	*keywords[] =
+	const char	*keywords[] =
 	{
-	"1p",
-	"5meOdmt",
-	"dissociatives",
-	"noids",
-	"1P_LSD",
-	"dissonautuniverse",
-	"nootropics",
-	"2cb",
-	"dmt",
-	"opiates",
-	"4acodmt",
-	"DPH",
-	"PCP",
-	"adderall",
-	"dxm",
-	"phenibut",
-	"afinil",
-	"fentanyl",
-	"PoppyTea",
-	"alcohol",
-	"kava",
-	"psilocybinmushrooms",
-	"ambien",
-	"ketamine",
-	"researchchemicals",
-	"amt",
-	"kombucha",
-	"salvia",
-	"anabolic",
-	"kratom",
-	"steroids",
-	"lean",
-	"stims",
-	"ayahuasca",
-	"lsa",
-	"thesaviorsubstances",
-	"benzodiazepines",
-	"lsd",
-	"treedibles",
-	"cannabis",
-	"mdma",
-	"trees",
-	"cannabisextracts",
-	"memantinehcl",
-	"cocaine",
-	"mescaline",
-	"cigarettes",
-	"meth",
-	"shrooms",
-	"crack",
-	"grass",
-	"dope",
-	"edibles",
-	"acid",
-	"heroin",
-	"booze",
-	"guns",
-	"sative",
-	"indica",
-	"molly",
-	"mdma",
-	"morphine",
-	"speed",
-	"opium",
-	"kandy",
-	"not drugs",
-	"steroids",
-	"lean",
-	"sizzurp",
-	"flakka",
-	"kush",
-	"smack",
-	"420",
-	"sex",
-	"blow",
-	"head",
-	"strip",
-	"sugar",
-	"daddy",
-	"loyal",
-	"spoil",
-	"mommy",
-	"milk",
-	"strip",
-	"drank",
-	"nudes",
-	"glizzy",
-	"mushroom",
-	"pill",
-	"eggplant",
-	"banana",
-	"aubergine",
-	"peach",
-	"water",
-	"needle",
-	"xxx",
-	"i love you",
-	"will you marry me",
-	"password",
-	"pas",
-	"kill",
-	"fuck",
-	NULL
+		"1p",
+		"5meOdmt",
+		"dissociatives",
+		"noids",
+		"1P_LSD",
+		"dissonautuniverse",
+		"nootropics",
+		"2cb",
+		"dmt",
+		"opiates",
+		"4acodmt",
+		"DPH",
+		"PCP",
+		"adderall",
+		"dxm",
+		"phenibut",
+		"afinil",
+		"fentanyl",
+		"PoppyTea",
+		"alcohol",
+		"kava",
+		"psilocybinmushrooms",
+		"ambien",
+		"ketamine",
+		"researchchemicals",
+		"amt",
+		"kombucha",
+		"salvia",
+		"anabolic",
+		"kratom",
+		"steroids",
+		"lean",
+		"stims",
+		"ayahuasca",
+		"lsa",
+		"thesaviorsubstances",
+		"benzodiazepines",
+		"lsd",
+		"treedibles",
+		"cannabis",
+		"mdma",
+		"trees",
+		"cannabisextracts",
+		"memantinehcl",
+		"cocaine",
+		"mescaline",
+		"cigarettes",
+		"meth",
+		"shrooms",
+		"crack",
+		"grass",
+		"dope",
+		"edibles",
+		"acid",
+		"heroin",
+		"booze",
+		"guns",
+		"sative",
+		"indica",
+		"molly",
+		"mdma",
+		"morphine",
+		"speed",
+		"opium",
+		"kandy",
+		"not drugs",
+		"steroids",
+		"lean",
+		"sizzurp",
+		"flakka",
+		"kush",
+		"smack",
+		"420",
+		"sex",
+		"blow",
+		"head",
+		"strip",
+		"sugar",
+		"daddy",
+		"loyal",
+		"spoil",
+		"mommy",
+		"milk",
+		"strip",
+		"drank",
+		"nudes",
+		"glizzy",
+		"mushroom",
+		"pill",
+		"eggplant",
+		"banana",
+		"aubergine",
+		"peach",
+		"water",
+		"needle",
+		"xxx",
+		"i love you",
+		"will you marry me",
+		"password",
+		"pas",
+		"kill",
+		"fuck",
+		NULL
 	};
 
 	i = 0;
-	while (keywords[i] != 0)
+	while (keywords[i] != NULL)
 	{
 		char *ptr;
 		ptr = strstr(buf, keywords[i]);
@@ -224,14 +227,13 @@ void	censor(char *buf)
 // Function to display comments
 void	comments(p_list *iterate)
 {
-	p_list	*ptr;
 	printf("\U0001F6A8\U0001F6A8\U0001F6A8 %sTransactions that EVERYONE can see:%s \U0001F6A8\U0001F6A8\U0001F6A8\n\n", BRED, reset);
 	
 	while (iterate != 0)
 	{
-		censor(iterate->comment);
+		// censor(iterate->comment);
 		printf("%s - %s\n", iterate->date, iterate->comment);
-		iterate->next;
+		iterate = iterate->next;
 	}
 	printf("\n");
 }
@@ -290,10 +292,13 @@ int	main(void)
 	// 	iterate = iterate->next;
 	// }
 
-	message();
-	general(iterate);
-	comments(iterate);
-	help();
+	if (iterate != NULL)
+	{
+		message();
+		general(iterate);
+		comments(iterate);
+		help();
+	}
 	// free the list and all it's char pointers.
 	clear_scuffed_free_list(ptr);
 }
