@@ -6,14 +6,14 @@
 /*   By: kfu <kfu@student.codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 10:07:33 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 16:36:02 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 17:23:08 by jhille        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interface.h"
 #include "template/template.h"
 
-char name[100];
+char	name[100];
 
 void	printascii(char *pathname, char *colour, int delay)
 {
@@ -50,7 +50,7 @@ void	nextslide(char *question)
 	}
 }
 
-p_lst	*findname(char *name, char **profile)
+p_list	*findname(char *name, char **prof)
 {
 	int	fd;
 	char	*line;
@@ -60,20 +60,24 @@ p_lst	*findname(char *name, char **profile)
 	
 	while (ft_getline(fd, &line) != 0)
 	{
-		profile = ft_split(line, ',');
-		if (ft_strncmp(name, profile[0]) == 0)
+		prof = ft_split(line, ',');
+		if (ft_strncmp(name, prof[0], ft_strlen(prof[0])) == 0)
 		{
-			temp = ft_lstnew(
-			
+			temp = ft_profilenew(prof);
+			ft_profileadd_back(&head, temp);
 		}
 	}
+	return (head);
 }
 
 int	main(void)
 {
 	int	msec;
-	char	**profile;
+	char	**prof;
+	p_list	*ptr;
+	p_list	*iterate;
 
+	prof = 0;
 	msec = 0;
 	printascii("ascii_art/welcome", YEL, 1);
 	printf("\n%s			Continue?%s\n", BLU, reset);
@@ -85,7 +89,15 @@ int	main(void)
 	printf("\n%s			Please enter your user/real name:%s\n", BLU, reset);
 	ft_memset(name, 0, 50);
 	scanf("%s", name);
-	findname(name, profile);
+
+	ptr = findname(name, prof);
+	iterate = ptr;	
+	while (iterate != 0)
+	{
+		printf("%s", iterate->username);
+		iterate = iterate->next;
+	}
+
 	message();
 	general();
 	comments();

@@ -6,7 +6,7 @@
 /*   By: jhille <marvin@codam.nl>                     +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/12 11:12:25 by jhille        #+#    #+#                 */
-/*   Updated: 2020/12/12 16:36:06 by jhille        ########   odam.nl         */
+/*   Updated: 2020/12/12 17:23:59 by jhille        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,11 @@ typedef struct user
 	char	*displayname;
 	char	*date;
 	char	*comment;
-	struct	p_list	*next;
+	struct user	*next;
 }		p_list;
+
+void	ft_profileadd_back(p_list **head, p_list *new);
+
+p_list	*ft_profilenew(char *content[]);
 
 #endif
